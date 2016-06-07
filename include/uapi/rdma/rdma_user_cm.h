@@ -38,8 +38,10 @@
 #include <linux/in6.h>
 #include <rdma/ib_user_verbs.h>
 #include <rdma/ib_user_sa.h>
+#include <rdma/rdma_ioctl.h>
 
-#define RDMA_USER_CM_ABI_VERSION	4
+#define RDMA_USER_CM_ABI_VERSION	5
+#define RDMA_UCM_BASE			UDA_NS_BASE(RDMA_UCM)
 
 #define RDMA_MAX_PRIVATE_DATA		256
 
@@ -66,7 +68,8 @@ enum {
 	RDMA_USER_CM_CMD_QUERY,
 	RDMA_USER_CM_CMD_BIND,
 	RDMA_USER_CM_CMD_RESOLVE_ADDR,
-	RDMA_USER_CM_CMD_JOIN_MCAST
+	RDMA_USER_CM_CMD_JOIN_MCAST,
+	RDMA_USER_CM_MAX_CMD
 };
 
 /*
@@ -82,8 +85,14 @@ struct rdma_ucm_create_id {
 	__u64 uid;
 	__u64 response;
 	__u16 ps;
+	__u8 qp_type;
+	__u8 resv[5];
+};
+
+struct rdma_ucm_id_attr {
+	__u16 ps;
 	__u8  qp_type;
-	__u8  reserved[5];
+	__u8  resv[5];
 };
 
 struct rdma_ucm_create_id_resp {

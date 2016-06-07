@@ -106,6 +106,7 @@ struct uda_raw_ioctl {
 /* name spaces */
 enum {
 	UDA_NS_MGR,
+	RDMA_UCM,
 };
 
 #define UDA_NS_BASE(NS)		(NS * UDA_OP_RANGE)
@@ -126,6 +127,7 @@ enum {
 	UDA_OBJ_ID,
 	UDA_UCONTEXT,
 	UDA_NS_ATTR,
+	RDMA_UCM_ID_ATTR
 };
 
 struct uda_iovec {
