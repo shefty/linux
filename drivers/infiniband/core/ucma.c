@@ -491,9 +491,9 @@ static ssize_t ucma_create_id(struct ucma_file *file, const char __user *inbuf,
 err2:
 	rdma_destroy_id(ctx->cm_id);
 err1:
-	mutex_lock(&mut);
+	mutex_lock(&file->mut);
 	idr_remove(&ctx_idr, ctx->id);
-	mutex_unlock(&mut);
+	mutex_unlock(&file->mut);
 	kfree(ctx);
 	return ret;
 }

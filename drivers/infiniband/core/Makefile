@@ -26,7 +26,7 @@ rdma_cm-y :=			cma.o
 
 rdma_cm-$(CONFIG_INFINIBAND_ADDR_TRANS_CONFIGFS) += cma_configfs.o
 
-rdma_ucm-y :=			ucma.o
+rdma_ucm-y :=			ucma.o urdma.o
 
 ib_addr-y :=			addr.o
 
