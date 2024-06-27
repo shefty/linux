@@ -250,7 +250,10 @@ struct rdma_ucm_disconnect {
 struct rdma_ucm_init_qp_attr {
 	__aligned_u64 response;
 	__u32 id;
-	__u32 qp_state;
+	__u8 flags;
+	__u8 reserved;
+	__u8 cur_qp_state;
+	__u8 qp_state;
 };
 
 struct rdma_ucm_notify {
